@@ -79,7 +79,7 @@ with DAG(
     extract_mongo = PythonVirtualenvOperator(
         task_id='extrair_mongodb_id',
         python_callable=extract_mongo,
-        requirements=["pymongo", "json"],
+        requirements=["pymongo"],
     )
 
     listar_arquivos = BashOperator(
