@@ -25,7 +25,9 @@ def extract_mongo():
     db = client.teste
 
     # Consultar Collection TesteCollection:
-    df = pd.json_normalize(db["testemongo"].find())
+    #df = pd.json_normalize(db["testemongo"].find())
+    for x in db["testemongo"].find():
+        df = pd.json_normalize(x)
     
     print(df.head())
 
