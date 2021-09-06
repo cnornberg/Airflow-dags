@@ -85,9 +85,9 @@ with DAG(
         requirements=["pymongo"],
     )
 
-    listar_arquivos = BashOperator(
+    cat_arquivo = BashOperator(
         task_id = 'cat_arquivo_csv',
         bash_command='cat /tmp/teste.csv',
     )
 
-extract_mongo >> cat_arquivo_csv
+extract_mongo >> cat_arquivo
