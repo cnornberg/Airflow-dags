@@ -31,6 +31,7 @@ def extract_mongo():
     df.to_csv('teste.csv')
 
     print("Extração Concluída")
+    return 'Fim Extract MongoDB!!!'
 
 # 
 
