@@ -21,7 +21,7 @@ def extract_mongo():
     # from pprint import pprint
 
     # Conectar no MongoDB - Database teste
-    client = pymongo.MongoClient('mongodb://root:CPcw3cgIir@localhost:27017')
+    client = pymongo.MongoClient('mongodb://root:CPcw3cgIir@mongodb.airflow.svc.cluster.local:27017')
     db = client.teste
 
     # Consultar Collection TesteCollection:
