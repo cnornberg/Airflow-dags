@@ -4,7 +4,7 @@ from airflow import DAG
 
 # Operators; we need this to operate!
 from airflow.operators.bash import BashOperator
-from airflow.operators.python import PythonOperator
+from airflow.operators.python import PythonOperator, PythonVirtualenvOperator
 from airflow.utils.dates import days_ago
 from datetime import timedelta
 
@@ -12,6 +12,7 @@ from datetime import timedelta
 
 # Função para conectar no Mongo e consultar Collection - Extract
 def extract_mongo():
+    #!pip install pymongo
     import pymongo
     import json
     import pandas as pd
@@ -74,9 +75,11 @@ with DAG(
 
     # t1, t2 and t3 are examples of tasks created by instantiating operators
     # [START basic_task]
-    extract_mongo = PythonOperator(
+    #extract_mongo = PythonOperator(
+    extract_mongo = PythonVirtualenvOperator(
         task_id='extrair_mongodb_id',
         python_callable=extract_mongo,
+        requirements=["pymongo", "json"],
     )
 
     listar_arquivos = BashOperator(
