@@ -27,7 +27,7 @@ def extract_mongo():
     # Consultar Collection TesteCollection:
     df = pd.json_normalize(db["TesteCollection"].find())
     
-    df.head()
+    print(df.head())
 
     # Salvar csv:
     df.to_csv('/tmp/teste.csv')
