@@ -26,9 +26,11 @@ def extract_mongo():
 
     # Consultar Collection TesteCollection:
     df = pd.json_normalize(db["TesteCollection"].find())
+    
+    df.head()
 
     # Salvar csv:
-    df.to_csv('teste.csv')
+    df.to_csv('/tmp/teste.csv')
 
     print("Extração Concluída")
     return 'Fim Extract MongoDB!!!'
@@ -84,8 +86,8 @@ with DAG(
     )
 
     listar_arquivos = BashOperator(
-        task_id = 'listar_arquivos_ls',
-        bash_command='ls -l',
+        task_id = 'cat_arquivo_csv',
+        bash_command='cat /tmp/teste.csv',
     )
 
-extract_mongo >> listar_arquivos
+extract_mongo >> cat_arquivo_csv
