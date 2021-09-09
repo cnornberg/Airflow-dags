@@ -76,18 +76,16 @@ with DAG(
 # [END instantiate_dag]
 
 # [START basic_task]
-    query_mongo_task = PythonVirtualenvOperator(
+    query_mongo_task = PythonOperator(
         task_id='query_mongo_task',
         python_callable=query_mongo_collection,
-        requirements=["pymongo"],
         provide_context=True,
         # ti.xcom_push=True,
     )
 
-    extract_mongo_task = PythonVirtualenvOperator(
+    extract_mongo_task = PythonOperator(
         task_id='extract_mongo_task',
         python_callable=extract_mongo,
-        requirements=["pymongo"],
         provide_context=True,
     )
 
