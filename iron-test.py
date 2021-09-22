@@ -4,7 +4,9 @@ from airflow.operators.bash import BashOperator
 from airflow.operators.python import PythonOperator, PythonVirtualenvOperator
 from airflow.operators.python_operator import PythonOperator
 from airflow.utils.dates import days_ago
-from airflow.providers.mongo.hooks.mongo import MongoHook  
+from airflow.providers.mongo.hooks.mongo import MongoHook 
+from airflow.hooks.base_hook import BaseHook
+
 
 from datetime import timedelta
 # [END import_module]
@@ -34,7 +36,8 @@ from pandas.io.json import json_normalize
 #Teste Cris INICIO
 def test_iron():
     # from mongo_plugin.hooks.mongo_hook import MongoHook
-    mongo = MongoHook(conn_id='iron_analytics_db')
+    mongo = MongoHook.get_conn(iron_analytics_db)
+    #conn = BaseHook.get_connection('iron_analytics_db')
     print(mongo)
     #db = mongo.analytics_db
     #for x in db["_user"].find():
