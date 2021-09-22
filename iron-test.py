@@ -38,7 +38,7 @@ def test_iron():
     print(mongo)
     #db = mongo.analytics_db
     #for x in db["_user"].find():
-        df = pd.json_normalize(x)
+    #    df = pd.json_normalize(x)
     #print(df)
 #Teste Cris FINAL
 # [END MongoDB Connector]
