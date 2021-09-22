@@ -34,7 +34,7 @@ from pandas.io.json import json_normalize
 #Teste Cris INICIO
 def test_iron():
     # from mongo_plugin.hooks.mongo_hook import MongoHook
-    mongo = MongoHook(conn_id=iron_analytics_db)
+    mongo = MongoHook(conn_id='iron_analytics_db')
     print(mongo)
     #db = mongo.analytics_db
     #for x in db["_user"].find():
