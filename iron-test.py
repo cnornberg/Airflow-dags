@@ -39,7 +39,10 @@ def test_iron():
     #conn = BaseHook.get_connection('iron_analytics_db')
     mongo = MongoHook('iron_analytics_db')
     #conn = BaseHook.get_connection('iron_analytics_db')
-    print(mongo)
+    #print(mongo)
+    for x in mongo["_users"].find():
+        df = pd.json_normalize(x)
+    print(df)
     #db = mongo.analytics_db
     #for x in db["_user"].find():
     #    df = pd.json_normalize(x)
